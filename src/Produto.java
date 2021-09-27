@@ -1,7 +1,7 @@
-public class Produto {
+3public class Produto {
     private String nomeDoProduto;
     private double preco;
-    private int quantidade;
+    private int quantidade = 0;
 
     Produto(String nomeDoProduto, double preco, int quantidade) {
         setnomeDoProduto(nomeDoProduto);
