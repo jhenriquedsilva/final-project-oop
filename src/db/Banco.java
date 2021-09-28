@@ -5,32 +5,48 @@ import java.util.ArrayList;
 import cliente.Pedidos;
 import humanos.Cliente;
 import humanos.Funcionario;
+import db.utils.Arquivo;
 
 public class Banco {
-    private ArrayList<Funcionario> funcionarios = new ArrayList<Funcionario>();
-    private ArrayList<Cliente> clientes = new ArrayList<Cliente>();
-    private ArrayList<Pedidos> pedidos = new ArrayList<Pedidos>();
+    
+    private Arquivo arquivo = new Arquivo();
 
-    public static Banco getInstance() {
-        return new Banco();
+    private static Banco banco;
+
+    private Banco() {}
+
+    public static Banco instancia() {
+        if (banco == null) {
+            banco = new Banco();
+        }
+        return banco;
     }
+
+    public void inserirCliente(Cliente cliente) {
+        String dados = String.format("s|s|s|s", cliente.getNome(),cliente.getIdade(),cliente.getEmail(),cliente.getSenha());
+        arquivo.escrever("src/clientes.txt", dados);
+    }
+
+    public void inserirFuncionario(Funcionario funcionario) {
+        String dados = String.format("s|s|s|s", funcionario.getNome(),funcionario.getIdade(),funcionario.getEmail(),funcionario.getSenha());
+        arquivo.escrever("src/funcionarios.txt", dados);
+    }
+    
 
     public ArrayList<Funcionario> getFuncionarios() {
         return funcionarios;
     }
-
     public ArrayList<Cliente> getClientes() {
         return clientes;
     }
 
-    public Funcionario buscarFuncionario(String id) {
-        for (Funcionario f : funcionarios) {
-            if (f.getId().equals(id)) {
-                return f;
+    public Funcionario buscarFuncionario(String email) {
+        String[] dados = arquivo.ler(email, "src/funcionarios.txt");
+            if (dados != null) {
+                return new Funcionario(dados[0], Integer.parseInt(dados[1]),dados[2],dados[3]);
+            } else {
+                return null;
             }
-        }
-
-        return null;
     }
 
     public Funcionario buscarFuncionarioPorNome(String nome) {

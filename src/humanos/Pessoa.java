@@ -17,7 +17,7 @@ public class Pessoa {
         setIdade(idade);
         setEmail(email);
         setSenha(senha);
-        setId(UUID.randomUUID().toString());
+        this.id = UUID.randomUUID().toString();
     }
 
     public void setNome(String nome) {
@@ -58,10 +58,6 @@ public class Pessoa {
 
     public String getEndereco() {
         return this.endereco;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getId() {

@@ -1,14 +1,30 @@
-package db;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
+package db.utils;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.FileReader;
+import java.io.BufferedReader;
 
-// Salvação https://www.codejava.net/java-se/file-io/how-to-read-and-write-text-file-in-java
+public class Arquivo {
 
-public class LeitoraDeArquivoDeTexto {
+    public void escrever(String caminho, String dados) {
+        try {
+            // A flag true indica que haverá uma uma anexação, e não uma sobrescrita
+            FileWriter escritor = new FileWriter(caminho, true);
+            BufferedWriter bufferedWriter = new BufferedWriter(escritor);
+ 
+            bufferedWriter.write(dados);
+            bufferedWriter.newLine();
 
-    public static String[] geraArrayListComDados(String identificacao, String caminho) {
+            bufferedWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+ 
+    }
+
+
+    public String[] ler(String identificacao, String caminho) {
         try {
             FileReader leitor = new FileReader(caminho);
             BufferedReader bufferedReader = new BufferedReader(leitor);
@@ -33,5 +49,4 @@ public class LeitoraDeArquivoDeTexto {
 
         return null;
     }
-
 }
