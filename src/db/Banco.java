@@ -8,7 +8,7 @@ import humanos.Funcionario;
 import db.utils.Arquivo;
 
 public class Banco {
-    
+
     private Arquivo arquivo = new Arquivo();
 
     private static Banco banco;
@@ -42,11 +42,8 @@ public class Banco {
 
     public Funcionario buscarFuncionario(String email) {
         String[] dados = arquivo.ler(email, "src/funcionarios.txt");
-            if (dados != null) {
-                return new Funcionario(dados[0], Integer.parseInt(dados[1]),dados[2],dados[3]);
-            } else {
-                return null;
-            }
+        
+
     }
 
     public Funcionario buscarFuncionarioPorNome(String nome) {
