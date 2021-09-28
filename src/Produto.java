@@ -1,24 +1,47 @@
-3public class Produto {
+public class Produto {
     private String nomeDoProduto;
     private double preco;
     private int quantidade = 0;
 
-    Produto(String nomeDoProduto, double preco, int quantidade) {
+    private SetoresDeProdutos setor;
+
+    Produto(String nomeDoProduto, double preco, int quantidade, SetoresDeProdutos setor) {
         setnomeDoProduto(nomeDoProduto);
         setPreco(preco);
         setQuantidade(quantidade);
+        setSetor(setor);
     }
-    
-    public String getnomeDoProduto(){return this.nomeDoProduto;}
 
-    public double getPreco(){return this.preco;}
+    public String getnomeDoProduto() {
+        return this.nomeDoProduto;
+    }
 
-    public int getQuantidade(){return this.quantidade;}
+    public double getPreco() {
+        return this.preco;
+    }
 
-    public void setnomeDoProduto(String nomeDoProduto){this.nomeDoProduto = nomeDoProduto;}
+    public int getQuantidade() {
+        return this.quantidade;
+    }
 
-    public void setPreco(double preco){this.preco = preco;}
+    public void setnomeDoProduto(String nomeDoProduto) {
+        this.nomeDoProduto = nomeDoProduto;
+    }
 
-    public void setQuantidade(int quantidade){this.quantidade = quantidade;}
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public void setSetor(SetoresDeProdutos setor) {
+        this.setor = setor;
+    }
+
+    public void getSetor(SetoresDeProdutos setor) {
+        return this.setor;
+    }
 
 }
