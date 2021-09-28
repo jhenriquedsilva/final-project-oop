@@ -85,7 +85,7 @@ public class Banco {
         pedidos.add(p);
     }
 
-    public void removerPedido(Pedido p) {
+    public void removerPedido(Pedidos p) {
         pedidos.remove(p);
     }
 
