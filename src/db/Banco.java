@@ -24,12 +24,12 @@ public class Banco {
 
     public void inserirCliente(Cliente cliente) {
         String dados = String.format("s|s|s|s", cliente.getNome(),cliente.getIdade(),cliente.getEmail(),cliente.getSenha());
-        arquivo.escrever("src/clientes.txt", dados);
+        arquivo.escrever("lib/clientes.txt", dados);
     }
 
     public void inserirFuncionario(Funcionario funcionario) {
         String dados = String.format("s|s|s|s", funcionario.getNome(),funcionario.getIdade(),funcionario.getEmail(),funcionario.getSenha());
-        arquivo.escrever("src/funcionarios.txt", dados);
+        arquivo.escrever("lib/funcionarios.txt", dados);
     }
     
 
