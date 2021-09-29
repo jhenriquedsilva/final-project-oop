@@ -1,11 +1,9 @@
-package UI;
-
+package ui;
 import java.util.Scanner;
 import recursos.Cores;
-import db.EscritoraDeArquivoDeTexto;
-import db.LeitoraDeArquivoDeTexto;
 
 public class InterfaceCliente implements Interface {
+    
     Scanner scanner = new Scanner(System.in);
 
     int decisaoCliente;
@@ -23,15 +21,12 @@ public class InterfaceCliente implements Interface {
     System.out.println("");
     switch (decisaoCliente) {
         case 1:
-        InterfaceCPCadastro interfaceDoClienteComCadastro = new InterfaceCPCadastro();
-        interfaceDoClienteComCadastro.mostrarInterface();
-        break;
-        case 2:
-        InterfaceCNPCadastro interfaceDoClienteSemCadastro = new InterfaceCNPCadastro();
-        interfaceDoClienteSemCadastro.mostrarInterface();
+        new InterfaceCPCadastro().mostrarInterface();
         break;
 
-        case 3:
+        case 2:
+        new InterfaceCNPCadastro().mostrarInterface();
+        break;
         }
     }   
 }

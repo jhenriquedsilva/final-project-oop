@@ -1,4 +1,4 @@
-package UI;
+package ui;
 import recursos.Cores;
 
 public class InterfaceProdutos implements Interface{

@@ -1,8 +1,5 @@
 package db;
 
-import java.util.ArrayList;
-
-import cliente.Pedidos;
 import humanos.Cliente;
 import humanos.Funcionario;
 import db.utils.Arquivo;
@@ -23,29 +20,26 @@ public class Banco {
     }
 
     public void inserirCliente(Cliente cliente) {
-        String dados = String.format("s|s|s|s", cliente.getNome(),cliente.getIdade(),cliente.getEmail(),cliente.getSenha());
+        String dados = String.format("%s|%d|%s|%s", cliente.getNome(),cliente.getIdade(),cliente.getEmail(),cliente.getSenha());
         arquivo.escrever("lib/clientes.txt", dados);
     }
 
     public void inserirFuncionario(Funcionario funcionario) {
-        String dados = String.format("s|s|s|s", funcionario.getNome(),funcionario.getIdade(),funcionario.getEmail(),funcionario.getSenha());
+        String dados = String.format("%s|%d|%s|%s", funcionario.getNome(),funcionario.getIdade(),funcionario.getEmail(),funcionario.getSenha());
         arquivo.escrever("lib/funcionarios.txt", dados);
     }
     
 
-    public ArrayList<Funcionario> getFuncionarios() {
-        return funcionarios;
-    }
-    public ArrayList<Cliente> getClientes() {
-        return clientes;
-    }
-
     public Funcionario buscarFuncionario(String email) {
-        String[] dados = arquivo.ler(email, "src/funcionarios.txt");
-        
-
+        String[] dados = arquivo.ler(email, "lib/funcionarios.txt");
+        return new Funcionario(dados[0],Integer.parseInt(dados[1]),dados[2],dados[3]);
     }
 
+    public Cliente buscarCliente(String email) {
+        String[] dados = arquivo.ler(email, "lib/clientes.txt");
+        return new Cliente(dados[0],Integer.parseInt(dados[1]),dados[2],dados[3]);
+    }
+    /*
     public Funcionario buscarFuncionarioPorNome(String nome) {
         for (Funcionario f : funcionarios) {
             if (f.getNome().equals(nome)) {
@@ -55,7 +49,7 @@ public class Banco {
 
         return null;
     }
-
+    
     public Cliente buscarCliente(String id) {
         for (Cliente c : clientes) {
             if (c.getId().equals(id)) {
@@ -109,4 +103,5 @@ public class Banco {
     public void removerFuncionario(Funcionario f) {
         funcionarios.remove(f);
     }
+    */
 }

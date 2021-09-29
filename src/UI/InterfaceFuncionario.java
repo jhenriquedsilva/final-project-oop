@@ -1,4 +1,4 @@
-package UI;
+package ui;
 
 import recursos.Cores;
 import java.util.Scanner;
