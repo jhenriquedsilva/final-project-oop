@@ -13,7 +13,7 @@ public class App implements Interface {
         Scanner scanner = new Scanner(System.in);
         int decisaoCliente;
         do {
-             System.out.println("\n" + Cores.ANSI_YELLOW_2 + "BEM-VINDO AO BARATOSHOP 🛍️" + Cores.ANSI_RESET);
+             System.out.println("\n" + Cores.ANSI_YELLOW_2 + "    BEM-VINDO AO BARATOSHOP 🛍️" + Cores.ANSI_RESET);
 
         System.out.println(Cores.ANSI_GREEN_2 + """
 [1] Cliente
@@ -26,12 +26,10 @@ public class App implements Interface {
         
         switch (decisaoCliente){
             case 1:
-            InterfaceCliente interfaceDoCliente = new InterfaceCliente();
-            interfaceDoCliente.mostrarInterface();
+            new InterfaceCliente().mostrarInterface();
             break;
             case 2:
-            InterfaceFuncionario interfaceDoFuncionario = new InterfaceFuncionario();
-            interfaceDoFuncionario.mostrarInterface();
+            new InterfaceFuncionario().mostrarInterface();
             break;
             case 3:
             System.exit(0);
@@ -45,5 +43,7 @@ public class App implements Interface {
         //Inicializa a interface principal do APP, dando acesso às outras interfaces. 
         App InterfaceDoAPP = new App();
         InterfaceDoAPP.mostrarInterface();
+        InterfaceProdutos ip = new InterfaceProdutos();
+        //ip.mostrarInterface();
     }
 }

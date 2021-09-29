@@ -9,7 +9,7 @@ public class InterfaceFuncionario implements Interface {
 
     @Override
     public void mostrarInterface() {
-
+        System.out.println(Cores.ANSI_YELLOW_2 + "    CADASTRO" + Cores.ANSI_RESET);
         System.out.println(Cores.ANSI_GREEN_2 + """
 [1] Possui Cadastro 
 [2] Não possui cadastro """ + Cores.ANSI_RESET);

@@ -1,10 +1,14 @@
 package db.utils;
 
 import java.io.BufferedWriter;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.FileReader;
-import java.io.BufferedReader;
+import java.io.File;
+import java.util.Scanner;
+
+import db.utils.Crypto;
 
 public class Arquivo {
 
@@ -25,24 +29,25 @@ public class Arquivo {
     }
 
 
-    public String[] ler(String identificacao, String senha, String caminho) {
+    public String[] ler(String eMail, String senha, String caminho) {
+        Crypto c = new Crypto();
+        
         try {
-            FileReader leitor = new FileReader(caminho);
-            BufferedReader bufferedReader = new BufferedReader(leitor);
+            File arquivo = new File(caminho);
+            BufferedReader br = new BufferedReader(new FileReader(arquivo));
 
             String linha;
 
             // Lê linha por linha para verificar se a pessoa já está cadastrada
-            while ((linha = bufferedReader.readLine()) != null) {
-                String[] dados = linha.split("|");
-                if (dados[0].equals(identificacao) && dados[1].equals(senha)) {
-                    leitor.close();
-                    bufferedReader.close();
+            while ((linha = br.readLine()) != null) {
+                String[] dados = linha.split(";");
+                if (dados[2].equals(eMail) && c.decrypt(dados[3]).equals(senha)) {
+                    br.close();
                     return dados;
                 }
+                
             }
-            leitor.close();
-            bufferedReader.close();
+            br.close();
 
         } catch (IOException e) {
             e.printStackTrace();
