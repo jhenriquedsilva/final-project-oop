@@ -24,20 +24,25 @@ public class Banco {
         arquivo.escrever("lib/clientes.txt", dados);
     }
 
+    public Cliente buscarCliente(String email, String senha) {
+        String[] dados = arquivo.ler(email, senha, "lib/clientes.txt");
+        if (dados == null) {
+            return null
+        } else {
+            return new Cliente(dados[0],Integer.parseInt(dados[1]),dados[2],dados[3]);
+        }
+    
+    }
+
     public void inserirFuncionario(Funcionario funcionario) {
         String dados = String.format("%s|%d|%s|%s", funcionario.getNome(),funcionario.getIdade(),funcionario.getEmail(),funcionario.getSenha());
         arquivo.escrever("lib/funcionarios.txt", dados);
     }
     
 
-    public Funcionario buscarFuncionario(String email) {
-        String[] dados = arquivo.ler(email, "lib/funcionarios.txt");
+    public Funcionario buscarFuncionario(String email, String senha) {
+        String[] dados = arquivo.ler(email, senha, "lib/funcionarios.txt");
         return new Funcionario(dados[0],Integer.parseInt(dados[1]),dados[2],dados[3]);
-    }
-
-    public Cliente buscarCliente(String email) {
-        String[] dados = arquivo.ler(email, "lib/clientes.txt");
-        return new Cliente(dados[0],Integer.parseInt(dados[1]),dados[2],dados[3]);
     }
     /*
     public Funcionario buscarFuncionarioPorNome(String nome) {

@@ -25,7 +25,7 @@ public class Arquivo {
     }
 
 
-    public String[] ler(String identificacao, String caminho) {
+    public String[] ler(String identificacao, String senha, String caminho) {
         try {
             FileReader leitor = new FileReader(caminho);
             BufferedReader bufferedReader = new BufferedReader(leitor);
@@ -35,7 +35,7 @@ public class Arquivo {
             // Lê linha por linha para verificar se a pessoa já está cadastrada
             while ((linha = bufferedReader.readLine()) != null) {
                 String[] dados = linha.split("|");
-                if (dados[0].equals(caminho)) {
+                if (dados[0].equals(identificacao) && dados[1].equals(senha)) {
                     leitor.close();
                     bufferedReader.close();
                     return dados;
