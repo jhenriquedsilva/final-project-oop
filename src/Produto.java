@@ -1,11 +1,12 @@
+import produtos.SetoresDeProdutos;
+
 public class Produto {
     private String nomeDoProduto;
     private double preco;
     private int quantidade = 0;
-
     private SetoresDeProdutos setor;
 
-    Produto(String nomeDoProduto, double preco, int quantidade, SetoresDeProdutos setor) {
+    public Produto(String nomeDoProduto, double preco, int quantidade, SetoresDeProdutos setor) {
         setnomeDoProduto(nomeDoProduto);
         setPreco(preco);
         setQuantidade(quantidade);
@@ -40,7 +41,7 @@ public class Produto {
         this.setor = setor;
     }
 
-    public void getSetor(SetoresDeProdutos setor) {
+    public SetoresDeProdutos getSetor(SetoresDeProdutos setor) {
         return this.setor;
     }
 
