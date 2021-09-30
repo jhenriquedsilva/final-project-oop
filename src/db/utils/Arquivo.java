@@ -41,7 +41,7 @@ public class Arquivo {
             // Lê linha por linha para verificar se a pessoa já está cadastrada
             while ((linha = br.readLine()) != null) {
                 String[] dados = linha.split(";");
-                if (dados[2].equals(eMail) && c.decrypt(dados[3]).equals(senha)) {
+                if (dados[3].equals(eMail) && c.decrypt(dados[4]).equals(senha)) {
                     br.close();
                     return dados;
                 }

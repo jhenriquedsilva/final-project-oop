@@ -12,6 +12,8 @@ public class Cores {
     public static final String ANSI_BLUE = "\u001B[34m";
     public static final String ANSI_BLUE_2 = "\u001B[1;34m";
     public static final String ANSI_PURPLE = "\u001B[35m";
+    public static final String ANSI_PURPLE_2 = "\u001B[1;35m";
     public static final String ANSI_CYAN = "\u001B[36m";
     public static final String ANSI_WHITE = "\u001B[37m";
+    public static final String ANSI_WHITE_2 = "\u001B[1;37m";
 }

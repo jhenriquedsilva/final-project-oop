@@ -32,5 +32,7 @@ public class InterfaceCNPCadastro implements Interface {
         Cliente cliente = new Cliente(nomeCliente, idadeCliente, eMailCliente, senhaCliente);
 
         db.inserirCliente(cliente);
+        new InterfaceProdutos().mostrarInterface();
+        new InterfaceFinalizarCompra().mostrarInterface();
     }
 }

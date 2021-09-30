@@ -26,8 +26,6 @@ public class Banco {
     public void inserirCliente(Cliente cliente) {
         Crypto c = new Crypto();
 
-        System.out.println(cliente.getEmail());
-
         String dados = String.format("%s;%s;%d;%s;%s", UUID.randomUUID(), cliente.getNome(), cliente.getIdade(), cliente.getEmail(), c.encrypt(cliente.getSenha()));
         arquivo.escrever("lib/clientes.txt", dados);
     }
@@ -37,7 +35,7 @@ public class Banco {
         if (dados == null) {
             return null;
         } else {
-            return new Cliente(dados[0],Integer.parseInt(dados[1]),dados[2],dados[3]);
+            return new Cliente(dados[1],Integer.parseInt(dados[2]),dados[3],dados[4]);
         }
     
     }
@@ -52,69 +50,4 @@ public class Banco {
         String[] dados = arquivo.ler(email, senha, "lib/funcionarios.txt");
         return new Funcionario(dados[0],Integer.parseInt(dados[1]),dados[2],dados[3]);
     }
-    /*
-    public Funcionario buscarFuncionarioPorNome(String nome) {
-        for (Funcionario f : funcionarios) {
-            if (f.getNome().equals(nome)) {
-                return f;
-            }
-        }
-
-        return null;
-    }
-    
-    public Cliente buscarCliente(String id) {
-        for (Cliente c : clientes) {
-            if (c.getId().equals(id)) {
-                return c;
-            }
-        }
-
-        return null;
-    }
-
-    public Cliente buscarClientePorNome(String nome) {
-        for (Cliente c : clientes) {
-            if (c.getNome().equals(nome)) {
-                return c;
-            }
-        }
-
-        return null;
-    }
-
-    public Cliente buscarClientePorPedido(String pedidoId) {
-        for (Pedidos p : pedidos) {
-            if (p.getPedidoId().equals(pedidoId)) {
-                return p.getCliente();
-            }
-        }
-
-        return null;
-    }
-
-    public void adicionarFuncionario(Funcionario f) {
-        funcionarios.add(f);
-    }
-
-    public void adicionarCliente(Cliente c) {
-        clientes.add(c);
-    }
-
-    public void adicionarPedido(Pedidos p) {
-        pedidos.add(p);
-    }
-
-    public void removerPedido(Pedidos p) {
-        pedidos.remove(p);
-    }
-
-    public void removerCliente(Cliente c) {
-        clientes.remove(c);
-    }
-
-    public void removerFuncionario(Funcionario f) {
-        funcionarios.remove(f);
-    }
-    */
 }

@@ -43,7 +43,7 @@ public class App implements Interface {
         //Inicializa a interface principal do APP, dando acesso às outras interfaces. 
         App InterfaceDoAPP = new App();
         InterfaceDoAPP.mostrarInterface();
-        InterfaceProdutos ip = new InterfaceProdutos();
-        //ip.mostrarInterface();
+        
+
     }
 }

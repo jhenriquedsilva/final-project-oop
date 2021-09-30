@@ -5,9 +5,18 @@ import produtos.Produtos;
 
 public class Carrinho {
 
-    private ArrayList<Produtos> itens = new ArrayList<>();
+    private ArrayList<Produtos> itens = new ArrayList<Produtos>();
 
-    public Carrinho(){};
+    private static Carrinho carrinho;
+
+    private Carrinho() {}
+
+    public static Carrinho instancia() {
+        if (carrinho == null) {
+            carrinho = new Carrinho();
+        }
+        return carrinho;
+    }
 
     // Verifica se o array está vazio
     private boolean isEmpty() {
@@ -16,31 +25,66 @@ public class Carrinho {
 
     // Adiciona produtos no carrinho
     public void adicionarCarrinho(Produtos novoProduto) {
-        for (Produtos produtoNoCarrinho : itens) {
-            if (produtoNoCarrinho.getNome() == novoProduto.getNome()) {
-                System.out.println("Produto já está no carrinho. Adicionado mais 1");
-            } else {
-                itens.add(novoProduto); // Se o carrinho ainda não possui o produto, este é adicionado no carrinho
-                System.out.println("Produto adicionado no carrinho");
+        // Verifica o carrinho está vazio
+        if(!isEmpty()){
+            // Verifica se já existe o produto no carrinho
+            for (Produtos p : itens){
+                if (p.equals(novoProduto)){
+                    // Caso exista, ele só incrementa a quantidade
+                    p.setQtd(p.getQtd() + 1);
+                    return;
+                }
             }
         }
 
+        itens.add(novoProduto);
     }
 
     // Se a o carrinho não estiver vazio, fazer a remoção
-    public Produtos removerDoCarrinho(String nome) {
+    public void removerDoCarrinho(int id) {
         if (!isEmpty()) {
             for (Produtos produto : itens) {
-                if (produto.getNome() == produto.getNome()) {
+                if (produto.getId() == id) {
                     itens.remove(produto);
-                    return produto;
                 }
             }
-            return null; // Se o produto não existe no carrinho, retorna null
         } else {
             System.out.println("O carrinho está vazio");
-            return null; // Se o carrinho está vazio, retorna null
         }
+    }
+
+    public Produtos buscarProduto(int id) {
+        for (Produtos produto : itens) {
+            if (produto.getId() == id) {
+                return produto;
+            }
+        }
+        return null;
+    }
+
+    // Imprime todos os produtos que estãoo no carrinho
+    public void mostrarProdutosNoCarrinho() {
+        for (Produtos produto : itens) {
+            System.out.println(produto);
+        }
+    }
+
+    // Pega os ids dos produtos
+    public ArrayList<Integer> getIds() {
+        ArrayList<Integer> ids = new ArrayList<Integer>();
+        for (Produtos produto : itens) {
+            ids.add(produto.getId());
+        }
+        return ids;
+    }
+
+    // Calcula o preço total da compra
+    public double calcularTotal() {
+        double total = 0.0;
+        for (Produtos produto : itens) {
+            total += produto.getValor();
+        }
+        return total;
     }
 
 }

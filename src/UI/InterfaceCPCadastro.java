@@ -4,6 +4,7 @@ import java.util.Scanner;
 import db.Banco;
 import humanos.Cliente;
 
+
 public class InterfaceCPCadastro implements Interface {
     Scanner scanner = new Scanner(System.in);    
     Banco db = Banco.instancia();
@@ -27,6 +28,7 @@ public class InterfaceCPCadastro implements Interface {
         cliente = db.buscarCliente(eMailCliente, senhaCliente);
 
         } while(cliente == null);
-
+        new InterfaceProdutos().mostrarInterface();
+        new InterfaceFinalizarCompra().mostrarInterface();
     }
 }
