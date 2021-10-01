@@ -4,12 +4,18 @@ import java.util.Scanner;
 import db.Banco;
 import humanos.Cliente;
 
-public class InterfaceCNPCadastro implements Interface {
+public class InterfaceCNPCadastro extends Cadastro implements Interface {
         Scanner scanner = new Scanner(System.in);
         Banco db = Banco.instancia();
+        Cliente cliente;
 
     @Override
-    public void mostrarInterface() {
+    public void entrarComCadastro() {
+            return;
+    }    
+
+    @Override
+    public void fazerCadastro(){
         String nomeCliente;
         int idadeCliente;
         String eMailCliente;
@@ -29,10 +35,15 @@ public class InterfaceCNPCadastro implements Interface {
 [Senha]: """ + Cores.ANSI_RESET);       
         senhaCliente = scanner.nextLine();
         
-        Cliente cliente = new Cliente(nomeCliente, idadeCliente, eMailCliente, senhaCliente);
+        cliente = new Cliente(nomeCliente, idadeCliente, eMailCliente, senhaCliente);
 
         db.inserirCliente(cliente);
-        new InterfaceProdutos().mostrarInterface();
-        new InterfaceFinalizarCompra().mostrarInterface();
+    }
+        
+    @Override
+    public void mostrarInterface() {
+        fazerCadastro();    
+        new InterfaceProdutos().mostrarInterface(cliente);
+        new InterfaceFinalizarCompra().mostrarInterface(cliente);
     }
 }

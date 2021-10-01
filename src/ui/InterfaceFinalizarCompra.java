@@ -4,23 +4,21 @@ import recursos.Cores;
 import java.util.Scanner;
 import java.util.ArrayList;
 import produtos.Carrinho;
+import humanos.Cliente;
 
-
-public class InterfaceFinalizarCompra implements Interface {
+public class InterfaceFinalizarCompra implements InterfaceClienteLogado {
     private Carrinho carrinho = Carrinho.instancia();
     private Scanner scanner = new Scanner(System.in); 
     private int decisaoCliente;
 
-
-
     @Override
-    public void mostrarInterface() {
+    public void mostrarInterface(Cliente cliente) {
         do {
             System.out.println(Cores.ANSI_YELLOW_2 + "   \n    BARATOSHOP" + Cores.ANSI_RESET);
 
             System.out.println(Cores.ANSI_WHITE_2 + "   \nITENS NO CARRINHO" + Cores.ANSI_RESET);
-            carrinho.mostrarProdutosNoCarrinho();
-            System.out.println(Cores.ANSI_RED_2 + "[TOTAL] = " + carrinho.calcularTotal() + "" + Cores.ANSI_RESET);
+            cliente.carrinho.mostrarProdutosNoCarrinho();
+            System.out.printf(Cores.ANSI_RED_2 + "[TOTAL] = %.2f" + "%n" + Cores.ANSI_RESET,cliente.carrinho.calcularTotal());
             
             System.out.println(Cores.ANSI_GREEN_2 + "\nVocê deseja alterar algum produto [1] - SIM | [2] - NÃO: " + Cores.ANSI_RESET);
                     
@@ -40,27 +38,27 @@ public class InterfaceFinalizarCompra implements Interface {
                 if (decisaoCliente == 1) { // O cliente quer remover um produto
                     int id;
                     do {
-                        carrinho.mostrarProdutosNoCarrinho();
+                        cliente.carrinho.mostrarProdutosNoCarrinho();
                         System.out.println(Cores.ANSI_GREEN_2 + "\nDigite o id do produto: " + Cores.ANSI_RESET);
                         id = Integer.parseInt(scanner.nextLine());
                     } while (!carrinho.getIds().contains(id));
 
-                    carrinho.removerDoCarrinho(id);
+                   cliente.carrinho.removerDoCarrinho(id);
 
                 } else { // O cliente quer alterar a quantidade do produto                
                     int id;
                     do {
-                        carrinho.mostrarProdutosNoCarrinho();
+                        cliente.carrinho.mostrarProdutosNoCarrinho();
                         System.out.println(Cores.ANSI_GREEN_2 + "\nDigite o id do produto: " + Cores.ANSI_RESET);
                         id = Integer.parseInt(scanner.nextLine());
-                    } while (!carrinho.getIds().contains(id));    
+                    } while (!cliente.carrinho.getIds().contains(id));    
 
                     int novaQtd;
                     do {
                         System.out.println(Cores.ANSI_GREEN_2 + "\n Digite a nova quantidade do produto: " + Cores.ANSI_RESET);
                         novaQtd = Integer.parseInt(scanner.nextLine());
                     } while (novaQtd <= 0);
-                    carrinho.buscarProduto(id).setQtd(novaQtd);
+                    cliente.carrinho.buscarProduto(id).setQtd(novaQtd);
                     
                 }
 

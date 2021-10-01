@@ -22,6 +22,7 @@ public enum Produtos {
         this.nome = nome;
         this.setor = setor;
         this.id = id;
+        this.preco = valor * this.qtd;
     }
 
     public int getQtd() {

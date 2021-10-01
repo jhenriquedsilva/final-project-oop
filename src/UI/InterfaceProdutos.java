@@ -1,20 +1,20 @@
 package ui;
 import recursos.Cores;
 import java.util.Scanner;
-import produtos.Carrinho;
-
+import humanos.Cliente;
 import produtos.Produtos;
 
 
-public class InterfaceProdutos implements Interface {
+public class InterfaceProdutos implements InterfaceClienteLogado {
     private Scanner scanner = new Scanner(System.in);   
     private int decisaoCliente;
 
+  
+
     @Override
-    public void mostrarInterface() {
+    public void mostrarInterface(Cliente cliente) {
 
         Produtos[] produtos = Produtos.values(); // Vetor que todos os produtos da loja
-        Carrinho carrinho = Carrinho.instancia();
 
         do { // Laço que mostra o menu de compras
             do { // Laço para o cliente informar qual categoria de produto deseja comprar
@@ -22,7 +22,7 @@ public class InterfaceProdutos implements Interface {
                 System.out.println(Cores.ANSI_BLUE_2 + """
 !ESCOLHA UM SETOR!
 
-[1] VEGETAIS [2] FRUTAS
+[1] FRUTAS [2] VEGETAIS
 [3] BISCOITOS [4] NÃO PERECÍVEL
 [5] FINALIZAR COMPRAS""" + Cores.ANSI_RESET);
 
@@ -33,17 +33,17 @@ public class InterfaceProdutos implements Interface {
 
                 switch (decisaoCliente){ // A partir do switch case, depedendo da opção passada pelo cliente, um setor será selecionado ou a seção de finalização de compras será iniciada. 
                     case 1:// Cliente quer ver os vegetais
-                    System.out.println(Cores.ANSI_YELLOW_2 + "    VEGETAIS" + Cores.ANSI_RESET);
+                    System.out.println(Cores.ANSI_YELLOW_2 + "    FRUTAS" + Cores.ANSI_RESET);
                         for (Produtos produto : produtos) {
-                            if (produto.getSetor().equals("Vegetais")) {
+                            if (produto.getSetor().equals("Frutas")) {
                                 System.out.println(produto);
                             }
                         }
                         break;
                     case 2:// Cliente quer ver as frutas
-                        System.out.println(Cores.ANSI_YELLOW_2 + "    FRUTAS" + Cores.ANSI_RESET);
+                        System.out.println(Cores.ANSI_YELLOW_2 + "    VEGETAIS" + Cores.ANSI_RESET);
                         for (Produtos produto : produtos) {
-                            if (produto.getSetor().equals("Frutas")) {
+                            if (produto.getSetor().equals("Vegetais")) {
                                 System.out.println(produto);
                             }
                         }
@@ -80,7 +80,7 @@ public class InterfaceProdutos implements Interface {
                     int id = Integer.parseInt(scanner.nextLine());
                     for (Produtos produto : produtos) {
                         if (produto.getId() == id) {
-                            carrinho.adicionarCarrinho(produto);
+                            cliente.carrinho.adicionarCarrinho(produto);
                         }
                     }
                 } else {

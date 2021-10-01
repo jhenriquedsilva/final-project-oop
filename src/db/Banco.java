@@ -2,9 +2,7 @@ package db;
 
 import db.utils.Crypto;
 import db.utils.Arquivo;
-
 import humanos.Cliente;
-import humanos.Funcionario;
 
 import java.util.UUID;
 
@@ -40,14 +38,5 @@ public class Banco {
     
     }
 
-    public void inserirFuncionario(Funcionario funcionario) {
-        String dados = String.format("%s;%s;%d;%s;%s", UUID.randomUUID(), funcionario.getNome(),funcionario.getIdade(),funcionario.getEmail(),funcionario.getSenha());
-        arquivo.escrever("lib/funcionarios.txt", dados);
-    }
-    
 
-    public Funcionario buscarFuncionario(String email, String senha) {
-        String[] dados = arquivo.ler(email, senha, "lib/funcionarios.txt");
-        return new Funcionario(dados[0],Integer.parseInt(dados[1]),dados[2],dados[3]);
-    }
 }

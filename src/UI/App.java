@@ -2,12 +2,13 @@ package ui;
 
 import recursos.Cores;
 import java.util.Scanner;
-
+import humanos.Cliente;
 
 // A primeira interface do programa
 
 public class App implements Interface {
     
+    // 
     @Override
     public void mostrarInterface(){
         Scanner scanner = new Scanner(System.in);
