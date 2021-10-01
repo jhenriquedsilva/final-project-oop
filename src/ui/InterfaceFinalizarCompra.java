@@ -1,8 +1,6 @@
 package ui;
-import produtos.Produtos;
 import recursos.Cores;
 import java.util.Scanner;
-import java.util.ArrayList;
 import produtos.Carrinho;
 import humanos.Cliente;
 
@@ -11,7 +9,7 @@ public class InterfaceFinalizarCompra implements InterfaceClienteLogado {
     private Scanner scanner = new Scanner(System.in); 
     private int decisaoCliente;
 
-    @Override
+    @Override // Inicializa a interface de usuário para o cliente finalizar a compra. Recebe como parâmetro uma instância de cliente. 
     public void mostrarInterface(Cliente cliente) {
         do {
             System.out.println(Cores.ANSI_YELLOW_2 + "   \n    BARATOSHOP" + Cores.ANSI_RESET);

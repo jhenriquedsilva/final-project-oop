@@ -1,23 +1,20 @@
 package humanos;
 
-import java.util.UUID;
+// import java.util.UUID;
 
-// As classes funcionários e clientes herdarão desta classe.
+// Esta classe guarda as informações principais de um cliente.
 public class Pessoa {
     private String nome;
     private int idade;
     private String eMail;
     private String senha;
-    private String id;
-    // Pode ser criado um enum para armazenar o endereço
-    private String endereco;
 
     public Pessoa(String nome, int idade, String email, String senha) {
         setNome(nome);
         setIdade(idade);
         setEmail(email);
         setSenha(senha);
-        this.id = UUID.randomUUID().toString();
+        // this.id = UUID.randomUUID().toString();
     }
 
     public void setNome(String nome) {
@@ -52,15 +49,4 @@ public class Pessoa {
         return this.senha;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-
-    public String getEndereco() {
-        return this.endereco;
-    }
-
-    public String getId() {
-        return this.id;
-    }
 }

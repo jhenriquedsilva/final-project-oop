@@ -1,6 +1,6 @@
 package ui;
 
-import humanos.Cliente;
+// Interface que será implementadas pelas interfaces de usuário, as quais não precisam de um cliente logado para funcionar. 
 
 public interface Interface {
 

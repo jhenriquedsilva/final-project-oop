@@ -1,16 +1,15 @@
 package produtos;
 
 import java.util.ArrayList;
-import produtos.Produtos;
 
 public class Carrinho {
 
+    // Onde os itens do carrinho ficarão armazenados
     private ArrayList<Produtos> itens = new ArrayList<Produtos>();
 
+    // O carrinho implementa o padrão de projeto Singleton
     private static Carrinho carrinho;
-
     private Carrinho() {}
-
     public static Carrinho instancia() {
         if (carrinho == null) {
             carrinho = new Carrinho();
@@ -18,22 +17,19 @@ public class Carrinho {
         return carrinho;
     }
 
-    // Verifica se o array está vazio
-    private boolean isEmpty() {
+    // Verifica se não há itens no carrinho
+    public boolean isEmpty() {
         return itens.size() == 0;
     }
 
     // Adiciona produtos no carrinho
     public void adicionarCarrinho(Produtos novoProduto) {
-        // Verifica o carrinho está vazio
-        if(!isEmpty()){
-            // Verifica se já existe o produto no carrinho
-            for (Produtos p : itens){
-                if (p.equals(novoProduto)){
-                    // Caso exista, ele só incrementa a quantidade
-                    p.setQtd(p.getQtd() + 1);
-                    return;
-                }
+        // Verifica se já existe o produto no carrinho
+        for (Produtos p : itens){
+            if (p.equals(novoProduto)){
+                // Caso exista, ele só incrementa a quantidade
+                p.setQtd(p.getQtd() + 1);
+                return;
             }
         }
 
@@ -53,6 +49,7 @@ public class Carrinho {
         }
     }
 
+    // Busca o produto no carrinho pelo id e retorna o produto
     public Produtos buscarProduto(int id) {
         for (Produtos produto : itens) {
             if (produto.getId() == id) {
@@ -62,14 +59,14 @@ public class Carrinho {
         return null;
     }
 
-    // Imprime todos os produtos que estãoo no carrinho
+    // Imprime todos os produtos que estão no carrinho
     public void mostrarProdutosNoCarrinho() {
         for (Produtos produto : itens) {
             System.out.println(produto);
         }
     }
 
-    // Pega os ids dos produtos
+    // Retorna os ids dos produtos
     public ArrayList<Integer> getIds() {
         ArrayList<Integer> ids = new ArrayList<Integer>();
         for (Produtos produto : itens) {

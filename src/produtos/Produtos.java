@@ -2,6 +2,7 @@ package produtos;
 
 import recursos.Cores;
 
+// Todos os produtos da loja estão nesta classe
 public enum Produtos {
 
     BANANA(1.90, "Banana", "Frutas", 1), LARANJA(0.95, "Laranja", "Frutas", 2), ACEROLA(10.9, "Acerola", "Frutas", 3), MACA(2.99, "Maçã", "Frutas", 4), MELAO(5.80, "Melão", "Frutas", 5),
@@ -29,6 +30,7 @@ public enum Produtos {
         return qtd;
     }
 
+    // O cliente pode alterar a quantidade de unidades que deseja levar por meio deste atributo
     public void setQtd(int novaQtd) {
         this.qtd = novaQtd;
         this.preco = this.valor * novaQtd;

@@ -2,13 +2,13 @@ package ui;
 
 import recursos.Cores;
 import java.util.Scanner;
-import humanos.Cliente;
+
 
 // A primeira interface do programa
 
 public class App implements Interface {
     
-    // 
+    // Mostra a interface inicial da loja.
     @Override
     public void mostrarInterface(){
         Scanner scanner = new Scanner(System.in);
@@ -18,21 +18,17 @@ public class App implements Interface {
 
         System.out.println(Cores.ANSI_GREEN_2 + """
 [1] Cliente
-[2] Funcionário
-[3] Sair """ + Cores.ANSI_RESET);
+[2] Sair """ + Cores.ANSI_RESET);
         System.out.print(Cores.ANSI_YELLOW_2 + "Selecionar: " + Cores.ANSI_RESET);
         decisaoCliente = Integer.parseInt(scanner.nextLine());
         System.out.println("");
         } while (decisaoCliente != 1 && decisaoCliente != 2 && decisaoCliente != 3);
-        
-        switch (decisaoCliente){
+        // Cliente decide se quer entrar na loja ou sair dela.
+        switch (decisaoCliente){ 
             case 1:
             new InterfaceCliente().mostrarInterface();
             break;
             case 2:
-            new InterfaceFuncionario().mostrarInterface();
-            break;
-            case 3:
             System.exit(0);
             
 

@@ -4,6 +4,8 @@ import java.util.Scanner;
 import db.Banco;
 import humanos.Cliente;
 
+
+// Interface em que o cliente ainda não possui cadastro na loja.
 public class InterfaceCNPCadastro extends Cadastro implements Interface {
         Scanner scanner = new Scanner(System.in);
         Banco db = Banco.instancia();
@@ -14,7 +16,7 @@ public class InterfaceCNPCadastro extends Cadastro implements Interface {
             return;
     }    
 
-    @Override
+    @Override // O método faz o cadastro do cliente, recebendo os atributos: Nome; Idade; E-mail; Senha.
     public void fazerCadastro(){
         String nomeCliente;
         int idadeCliente;
@@ -35,13 +37,14 @@ public class InterfaceCNPCadastro extends Cadastro implements Interface {
 [Senha]: """ + Cores.ANSI_RESET);       
         senhaCliente = scanner.nextLine();
         
-        cliente = new Cliente(nomeCliente, idadeCliente, eMailCliente, senhaCliente);
+        cliente = new Cliente(nomeCliente, idadeCliente, eMailCliente, senhaCliente); // Cria o objeto cliente
 
-        db.inserirCliente(cliente);
+        db.inserirCliente(cliente); // Insere o cliente no banco de dados
     }
         
-    @Override
+    @Override // Chama o metodo de fazer cadastro e as demais interfaces.
     public void mostrarInterface() {
+
         fazerCadastro();    
         new InterfaceProdutos().mostrarInterface(cliente);
         new InterfaceFinalizarCompra().mostrarInterface(cliente);

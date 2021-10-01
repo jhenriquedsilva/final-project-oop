@@ -6,14 +6,17 @@ import humanos.Cliente;
 
 import java.util.UUID;
 
+// A classe Banco será a interface de comunicação com
+// o arquivo de texto que guarda as informações do cliente
 public class Banco {
 
+    // Por meio desta variável são feitas as
+    // leituras e escritas no arquivo de texto
     private Arquivo arquivo = new Arquivo();
 
+    // Implementa o padrão de projeto Singleton
     private static Banco banco;
-
     private Banco() {}
-
     public static Banco instancia() {
         if (banco == null) {
             banco = new Banco();
@@ -21,6 +24,8 @@ public class Banco {
         return banco;
     }
 
+    // Guarda as informações do cliente no arquivo de texto
+    // quaando ele realiza o cadastro
     public void inserirCliente(Cliente cliente) {
         Crypto c = new Crypto();
 
@@ -28,6 +33,8 @@ public class Banco {
         arquivo.escrever("lib/clientes.txt", dados);
     }
 
+    // Busca as informações do cliente para que ele possa fazer login,
+    // retornando uma instância do cliente
     public Cliente buscarCliente(String email, String senha) {
         String[] dados = arquivo.ler(email, senha, "lib/clientes.txt");
         if (dados == null) {

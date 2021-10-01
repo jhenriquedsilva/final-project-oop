@@ -6,15 +6,14 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.File;
-import java.util.Scanner;
 
-import db.utils.Crypto;
-
+// Esta classe manipula os arquivos de texto diretamente
 public class Arquivo {
 
+    // Informações são registradas no arquivo de texto
     public void escrever(String caminho, String dados) {
         try {
-            // A flag true indica que haverá uma uma anexação, e não uma sobrescrita
+            // O parâmetro true indica que haverá uma uma anexação, e não uma sobrescrita
             FileWriter escritor = new FileWriter(caminho, true);
             BufferedWriter bufferedWriter = new BufferedWriter(escritor);
  
@@ -29,6 +28,7 @@ public class Arquivo {
     }
 
 
+    // As informações do cliente são recuperadas
     public String[] ler(String eMail, String senha, String caminho) {
         Crypto c = new Crypto();
         
@@ -52,7 +52,8 @@ public class Arquivo {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        // Se o cliente não está cadastrado ou os dados estão incorretos,
+        //  retorna nulo
         return null;
     }
 }

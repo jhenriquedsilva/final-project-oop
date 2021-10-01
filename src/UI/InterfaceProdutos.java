@@ -11,7 +11,7 @@ public class InterfaceProdutos implements InterfaceClienteLogado {
 
   
 
-    @Override
+    @Override // Interface de usuário que mostra para usuário os produtos da loja por seção. Recebe por parâmetro uma instância de cliente. 
     public void mostrarInterface(Cliente cliente) {
 
         Produtos[] produtos = Produtos.values(); // Vetor que todos os produtos da loja
@@ -64,9 +64,15 @@ public class InterfaceProdutos implements InterfaceClienteLogado {
                             }
                         }
                         break; 
-                    case 5: // Cliente quer parar de adicionar produtos no carrinho
-                    // scanner.close(); DANDO PROBLEMA NA INTERFACE SEGUINTE          
-                    return; // Sai da seleção de setores e inicia a interface de finalização de compras.  
+                    case 5: 
+                        // Impede que o cliente passe para a seção de finalizar compras, caso o carrinho esteja vazio.
+                        if (cliente.carrinho.isEmpty()) {
+                            System.out.println(Cores.ANSI_RED_2 + "O carrinho está vazio" + Cores.ANSI_RESET);
+                            continue;
+                        }else{
+                            return; // Sai da seleção de setores e inicia a interface de finalização de compras.  
+                        }
+                       
                 }
                 System.out.println(Cores.ANSI_GREEN_2 + "\nVocê deseja adicionar um produto no carrinho [1] - SIM | [2] - NÃO: " + Cores.ANSI_RESET);
                 

@@ -4,7 +4,7 @@ import java.util.Scanner;
 import db.Banco;
 import humanos.Cliente;
 
-
+// Interface em que o cliente já possui cadastro na loja.
 public class InterfaceCPCadastro extends Cadastro implements Interface  {
     Scanner scanner = new Scanner(System.in);    
     Banco db = Banco.instancia();
@@ -17,7 +17,7 @@ public class InterfaceCPCadastro extends Cadastro implements Interface  {
     }    
 
 
-    @Override
+    @Override // O método recebe o cadastro do cliente (e-mail e senha) e valida as informações
     public void entrarComCadastro(){
         String senhaCliente;
         String eMailCliente;
@@ -37,7 +37,7 @@ public class InterfaceCPCadastro extends Cadastro implements Interface  {
             } while(cliente == null);
     }
 
-    @Override
+    @Override // Chama o metodo de cadastro e as demais interfaces.
     public void mostrarInterface() {
         
         entrarComCadastro();
