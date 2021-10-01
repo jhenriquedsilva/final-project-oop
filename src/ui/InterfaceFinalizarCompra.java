@@ -1,11 +1,9 @@
 package ui;
 import recursos.Cores;
 import java.util.Scanner;
-import produtos.Carrinho;
 import humanos.Cliente;
 
 public class InterfaceFinalizarCompra implements InterfaceClienteLogado {
-    private Carrinho carrinho = Carrinho.instancia();
     private Scanner scanner = new Scanner(System.in); 
     private int decisaoCliente;
 
@@ -39,7 +37,7 @@ public class InterfaceFinalizarCompra implements InterfaceClienteLogado {
                         cliente.carrinho.mostrarProdutosNoCarrinho();
                         System.out.println(Cores.ANSI_GREEN_2 + "\nDigite o id do produto: " + Cores.ANSI_RESET);
                         id = Integer.parseInt(scanner.nextLine());
-                    } while (!carrinho.getIds().contains(id));
+                    } while (!cliente.carrinho.getIds().contains(id));
 
                    cliente.carrinho.removerDoCarrinho(id);
 

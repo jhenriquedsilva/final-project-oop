@@ -1,7 +1,5 @@
 package humanos;
 
-// import java.util.UUID;
-
 // Esta classe guarda as informações principais de um cliente.
 public class Pessoa {
     private String nome;
@@ -9,12 +7,12 @@ public class Pessoa {
     private String eMail;
     private String senha;
 
+    // Construtor
     public Pessoa(String nome, int idade, String email, String senha) {
         setNome(nome);
         setIdade(idade);
         setEmail(email);
         setSenha(senha);
-        // this.id = UUID.randomUUID().toString();
     }
 
     public void setNome(String nome) {

@@ -6,9 +6,9 @@ import humanos.Cliente;
 
 // Interface em que o cliente já possui cadastro na loja.
 public class InterfaceCPCadastro extends Cadastro implements Interface  {
-    Scanner scanner = new Scanner(System.in);    
-    Banco db = Banco.instancia();
-    Cliente cliente;
+    private Scanner scanner = new Scanner(System.in);    
+    private Banco db = Banco.instancia();
+    private Cliente cliente;
 
 
     @Override

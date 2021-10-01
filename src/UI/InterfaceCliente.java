@@ -4,9 +4,9 @@ import recursos.Cores;
 
 public class InterfaceCliente implements Interface {
     
-    Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
 
-    int decisaoCliente;
+    private int decisaoCliente;
 
     @Override // Inicia a interface principal de cadastro do cliente
     public void mostrarInterface() {
