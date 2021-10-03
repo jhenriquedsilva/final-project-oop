@@ -14,7 +14,8 @@ Para testar este projeto, é necessário que você tenha o Java SDK instalado em
 
 ```bash
 git clone https://github.com/jhenriquedsilva/final-project-oop.git
-cd final-project-oop/src
+
+cd final-project-oop/src/ui
 javac App.java
 java App
 ```
