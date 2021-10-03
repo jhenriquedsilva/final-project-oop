@@ -12,48 +12,82 @@ import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
 public class Crypto {
-    private static SecretKeySpec secretKey;
-    private static String secretKeyString = "barataolojas2021";
-    private static byte[] key;
+  // Chave encriptada para o AES
+  private static SecretKeySpec secretKey;
 
-    public Crypto(){
+  // Chave de criptografia
+  private static String secretKeyString = "barataolojas2021";
 
-        MessageDigest sha = null;
+  // Algoritmo de criptografia
+  private static byte[] key;
 
-        try {
-            key = secretKeyString.getBytes("UTF-8");
-            sha = MessageDigest.getInstance("SHA-1");
-            key = sha.digest(key);
-            key = Arrays.copyOf(key, 16);
-            secretKey = new SecretKeySpec(key, "AES");
-        } catch (NoSuchAlgorithmException e){
-            e.printStackTrace();
-        } catch (UnsupportedEncodingException e){
-            e.printStackTrace();
-        }
+  /**
+   * Construtor da classe Crypto. Modifica o valor do atributo secretKey com uma
+   * chave baseada na chave secreta secretKeyString.
+   * 
+   * @throws NoSuchAlgorithmException
+   * @throws UnsupportedEncodingException
+   */
+  public Crypto() {
+
+    MessageDigest sha = null;
+
+    try {
+      key = secretKeyString.getBytes("UTF-8");
+      sha = MessageDigest.getInstance("SHA-1");
+
+      // Hash da chave
+      key = sha.digest(key);
+      key = Arrays.copyOf(key, 16);
+
+      // Cria a chave secreta
+      secretKey = new SecretKeySpec(key, "AES");
+    } catch (NoSuchAlgorithmException e) {
+      e.printStackTrace();
+    } catch (UnsupportedEncodingException e) {
+      e.printStackTrace();
     }
+  }
 
-    public String encrypt(String text) {
-        try {
-            Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5PADDING");
-            cipher.init(Cipher.ENCRYPT_MODE, secretKey);
-            byte[] encrypted = cipher.doFinal(text.getBytes("UTF-8"));
-            return Base64.getEncoder().encodeToString(encrypted);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+  /**
+   * Método que criptografa uma String.
+   * 
+   * @param text String a ser criptografada.
+   * @return String criptografada.
+   */
+  public String encrypt(String text) {
+    try {
+      // Cria o cipher
+      Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5PADDING");
 
-    public String decrypt(String text) {
-        try {
-            Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5PADDING");
-            cipher.init(Cipher.DECRYPT_MODE, secretKey);
-            byte[] decrypted = cipher.doFinal(Base64.getDecoder().decode(text));
-            return new String(decrypted);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
+      // Criptografa a String
+      cipher.init(Cipher.ENCRYPT_MODE, secretKey);
+      byte[] encrypted = cipher.doFinal(text.getBytes("UTF-8"));
+      return Base64.getEncoder().encodeToString(encrypted);
+    } catch (Exception e) {
+      e.printStackTrace();
     }
+    return null;
+  }
+
+  /**
+   * Método que descriptografa uma String.
+   * 
+   * @param text String a ser descriptografada.
+   * @return String descriptografada.
+   */
+  public String decrypt(String text) {
+    try {
+      // Cria o cipher
+      Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5PADDING");
+      cipher.init(Cipher.DECRYPT_MODE, secretKey);
+
+      // Decriptografa a String
+      byte[] decrypted = cipher.doFinal(Base64.getDecoder().decode(text));
+      return new String(decrypted);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    return null;
+  }
 }

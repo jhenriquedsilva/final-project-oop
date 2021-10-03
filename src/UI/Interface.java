@@ -4,6 +4,8 @@ package ui;
 
 public interface Interface {
 
-    // Função abstrata criada para implementar as interfaces de usuário.
-    public abstract void mostrarInterface();
+  /**
+   * Método abstrato que infere a exibição de interface de usuário.
+   */
+  public abstract void mostrarInterface();
 }
