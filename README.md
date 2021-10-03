@@ -10,7 +10,7 @@
 
 ## Como utilizar 👉
 
-Para testar este projeto, é necessário que você tenha o Java SDK instalado em sua máquina para poder compilar os códigos. Caso tenha, basta dar um clone neste repositório por meio do seguinte comando:
+Para testar este projeto, é necessário que você tenha o Java SDK instalado em sua máquina para poder compilar os códigos. Caso tenha, basta dar um clone neste repositório e compilar o arquivo _main_ por meio dos seguintes comandos:
 
 ```bash
 git clone https://github.com/jhenriquedsilva/final-project-oop.git
