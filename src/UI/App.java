@@ -40,6 +40,9 @@ public class App implements Interface {
         //Inicializa a interface principal do APP, dando acesso às outras interfaces. 
         App InterfaceDoAPP = new App();
         InterfaceDoAPP.mostrarInterface();
+
+        // quando remove o produto, o código para
+        // quando altera a quantidade do produto, o total do carrinho não atualiza
         
 
     }

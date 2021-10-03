@@ -75,6 +75,6 @@ public class InterfaceFinalizarCompra implements InterfaceClienteLogado {
                 }
                 
             }
-        }while(true);
+        } while (true);
     }    
 }

@@ -1,2 +1,7 @@
 55c779b8-38da-4b71-9277-47769ff3e735;Caio;35;caio@gmail.com;HUwoovKWXAJnYpT5Sn/OiA==
 8174646f-6cb1-42aa-bc0c-0a6db4a92eaa;Jonathas;35;jojo@gmail.com;Sq0U19Mek/pjOZjPlUdPyg==
+2818009d-e094-47be-9ad8-ed636a286d5f;jose;34;josehs;c6FhgKT6VZiPEZ3I/B8Gcw==
+b4cad98e-1a84-4062-acc0-1e951107c03e;ko;45;fr;vDezckc0wLHeB3WUgjOlYg==
+034cd448-0bc9-4457-8c6f-e4517a0d549a;fd;43;de;IChYRtLJKaff09vzelXQww==
+357ea92b-8ce8-4409-bd72-477e0edece6b;de;445;hy;wfo8WIiY37Eyznk+bwesAg==
+c74d1fa2-0da9-42d7-a6e8-21fc16e682ba;fr;34;e;xNvCBfql1zuP2P6/dBJb4w==
