@@ -26,14 +26,14 @@ public class App implements Interface {
       System.out.println("");
     } while (decisaoCliente != 1 && decisaoCliente != 2 && decisaoCliente != 3);
     // Cliente decide se quer entrar na loja ou sair dela.
-    switch (decisaoCliente) {
-      case 1:
-        new InterfaceCliente().mostrarInterface();
-        break;
-      case 2:
-        System.exit(0);
-
-        scanner.close();
+        switch (decisaoCliente) {
+        case 1:
+            new InterfaceCliente().mostrarInterface();
+            break;
+        case 2:
+            System.exit(0);
+            scanner.close();
+        }
     }
     
     public static void main(String[] args) throws Exception {
@@ -43,5 +43,6 @@ public class App implements Interface {
 
         // quando remove o produto, o código para
         // quando altera a quantidade do produto, o total do carrinho não atualiza
+    }    
     
 }
