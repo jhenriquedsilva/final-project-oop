@@ -8,7 +8,6 @@ import produtos.Produtos;
 public class InterfaceProdutos implements InterfaceClienteLogado {
   private Scanner scanner = new Scanner(System.in);
   private int decisaoCliente;
-  private Produtos[] produtos = Produtos.values(); // Vetor que todos os produtos da loja
 
   /**
    * Exibe as opções de interação com o programa disponíveis para o cliente.
@@ -17,6 +16,8 @@ public class InterfaceProdutos implements InterfaceClienteLogado {
    */
   @Override
   public void mostrarInterface(Cliente cliente) {
+
+    Produtos[] produtos = Produtos.values(); // Vetor que todos os produtos da loja
 
     do { // Laço que mostra o menu de compras
       do { // Laço para o cliente informar qual categoria de produto deseja comprar
@@ -87,6 +88,7 @@ public class InterfaceProdutos implements InterfaceClienteLogado {
         decisaoCliente = Integer.parseInt(scanner.nextLine());
       } while (decisaoCliente != 1 && decisaoCliente != 2); // Fim do laço para saber se o cliente deseja adicionar algo
                                                             // no carrinho
+
       if (decisaoCliente == 1) {
         System.out.print(Cores.ANSI_YELLOW_2 + "Digite o id do produto [ID]" + Cores.ANSI_RESET);
         int id = Integer.parseInt(scanner.nextLine());

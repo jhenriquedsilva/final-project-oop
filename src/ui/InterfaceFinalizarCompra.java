@@ -31,7 +31,6 @@ public class InterfaceFinalizarCompra implements InterfaceClienteLogado {
         decisaoCliente = Integer.parseInt(scanner.nextLine());
       } while (decisaoCliente != 1 && decisaoCliente != 2); // Fim do laço para saber se o cliente quer modificar o
                                                             // carrinho
-
       if (decisaoCliente == 1) { // O cliente decidiu alterar o carrinho
         System.out.println(Cores.ANSI_GREEN_2
             + "\nVocê deseja [1] - REMOVER PRODUTO | [2] - ALTERAR QUANTIDADE DO PRODUTO: " + Cores.ANSI_RESET);
@@ -82,7 +81,7 @@ public class InterfaceFinalizarCompra implements InterfaceClienteLogado {
           System.out.println(Cores.ANSI_RED_2 + "PEDIDO DESCARTADO!" + Cores.ANSI_RESET);
           return;
         }
-      }    
-    } while (true);  
-  }    
+      }
+    } while (true);
+  }
 }

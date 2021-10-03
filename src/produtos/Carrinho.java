@@ -59,10 +59,10 @@ public class Carrinho {
    */
   public void removerDoCarrinho(int id) {
     if (!isEmpty()) {
-      for (Produtos produto : itens) {
-        if (produto.getId() == id) {
-          itens.remove(produto);
-        }
+      Produtos p = this.buscarProduto(id);
+
+      if (p != null) {
+        itens.remove(p);
       }
     } else {
       System.out.println("O carrinho está vazio");
@@ -114,7 +114,7 @@ public class Carrinho {
   public double calcularTotal() {
     double total = 0.0;
     for (Produtos produto : itens) {
-      total += produto.getValor();
+      total += produto.getPreco();
     }
     return total;
   }
