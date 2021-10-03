@@ -88,7 +88,6 @@ public class InterfaceProdutos implements InterfaceClienteLogado {
         decisaoCliente = Integer.parseInt(scanner.nextLine());
       } while (decisaoCliente != 1 && decisaoCliente != 2); // Fim do laço para saber se o cliente deseja adicionar algo
                                                             // no carrinho
-
       if (decisaoCliente == 1) {
         System.out.print(Cores.ANSI_YELLOW_2 + "Digite o id do produto [ID]" + Cores.ANSI_RESET);
         int id = Integer.parseInt(scanner.nextLine());

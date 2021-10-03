@@ -25,6 +25,7 @@ java App
 Este projeto foi feito em decorrência do trabalho final da disciplina de Programação II da Faculdade de Computação da Universidade Federal do Estado do Pará.
 
 ## Equipe
+
 - [Henrique Silva](https://github.com/jhenriquedsilva)
 - [Caio André](https://github.com/cCaio-byte)
 - [Jonathas Andrade](https://github.com/eljonathas)
